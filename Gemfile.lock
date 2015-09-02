@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: e0b74d873157a3d9a77efb1c12f9d0b385ea35f9
+  specs:
+    active_model_serializers (0.10.0.rc2)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -149,6 +158,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   bcrypt
   byebug
   factory_girl_rails
@@ -161,3 +171,6 @@ DEPENDENCIES
   spring
   sqlite3
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6
