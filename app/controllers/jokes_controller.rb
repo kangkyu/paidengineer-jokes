@@ -2,7 +2,7 @@ class JokesController < ApplicationController
   before_action :ensure_current_user
 
   def index
-    render json: Joke.all
+    render json: Joke.all, each_serializer: JokeSerializer
   end
 
   def create
