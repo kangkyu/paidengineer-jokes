@@ -13,8 +13,13 @@ describe 'jokes', type: :request do
     response_body = JSON.parse(response.body)
     expect(response_body['body']).to eq(joke.body)
   end
-end
 
+  it 'should delete a joke record' do
+    delete "/jokes/#{joke.id}"
+
+    expect(response.status).to eq(204)
+  end
+end
 describe "GET /jokes", type: :request do
   let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
 
