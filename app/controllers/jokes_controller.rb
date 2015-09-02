@@ -13,6 +13,13 @@ class JokesController < ApplicationController
     render json: Joke.where(id: params[:id]).first.to_json
   end
 
+  def destroy
+    @joke = Joke.where(id: params[:id]).first
+    @joke.destroy
+
+    head 204
+  end
+
   private
     def joke_params
       params.permit(:body)
