@@ -13,4 +13,13 @@ describe 'jokes', type: :request do
     response_body = JSON.parse(response.body)
     expect(response_body['email']).to eq('newuser@example.com')
   end
+
+  it 'should delete a user' do
+    expect(User.count).to eq(2)
+
+    delete "/users/#{admin.id}"
+    expect(response.status).to eq(204)
+
+    expect(User.count).to eq(1)
+  end
 end
