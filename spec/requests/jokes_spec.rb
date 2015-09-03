@@ -15,11 +15,15 @@ describe 'jokes', type: :request do
   end
 
   it 'should delete a joke record' do
+    expect(Joke.count).to eq(1)
+
     delete "/jokes/#{joke.id}"
 
     expect(response.status).to eq(204)
+    expect(Joke.count).to eq(0)
   end
 end
+
 describe "GET /jokes", type: :request do
   let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
 
@@ -57,4 +61,3 @@ describe "GET /jokes", type: :request do
     end
   end
 end
-
