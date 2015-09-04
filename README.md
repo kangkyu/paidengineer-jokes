@@ -30,7 +30,7 @@ Use Postman
 
 Choose verb `POST` and route `'/sessions'` with URL Parameters: email and password of a saved user.
 
-+ and then use the session's token number
++ and then use the session's token string
 + open `'/jokes'` route now you should get JSON for all jokes
 
 ####use `jokes#index` action for `'/jokes'` route:
@@ -43,7 +43,7 @@ curl --header "Authorization: Auth dc77617f-181f-4de6-95f6-72a3ba4a667f" http://
 ```
 Use Postman
 
-Choose verb `GET` and route `'/jokes'` with a Header: Authorization "Auth \<token number\>" to get JSON of all jokes listed
+Choose verb `GET` and route `'/jokes'` with a Header: Authorization "Auth \<token\>" to get JSON of all jokes listed
 
 + delete a user
 
@@ -56,4 +56,4 @@ curl -X DELETE --header "Authorization: Auth dc77617f-181f-4de6-95f6-72a3ba4a667
 ```
 Use Postman
 
-Choose verb `DELETE` and route `'/users/1'` with a Header: Authorization as "Auth \<token number\>"
+Choose verb `DELETE` and route `'/users/1'` with a Header: Authorization as "Auth \<token\>"
