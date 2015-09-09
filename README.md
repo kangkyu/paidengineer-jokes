@@ -12,6 +12,21 @@ First, add a user and some jokes using `seeds.rb` file (or save your own data on
 bundle exec rake db:seed
 ```
 --
+###Pull Requests, Merging, and PivotalTracker
+"Start" a ticket on PivotalTracker and add yourself as an owner
+
+Use the ticket id# to name branches in the following format:
++ feature/ticket_number-INITIALS
++ bugfix/ticket_number-INITIALS
+
+Push branch, open pull request, and "Finish" ticket on PivotalTracker
+
+Once PR is approved, merge PR and "Deliver" ticket on PivotalTracker
+
+Product Manager will Accept or Reject the ticket
+
+--
+
 ###To use:
 
 Check if it's working correctly. Use [**cURL**](http://curl.haxx.se/docs/httpscripting.html) and [**Postman**](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) chrome app here for example:
