@@ -6,4 +6,7 @@ FactoryGirl.define do
   end
   
   factory :joke
+
+  factory :tag
 end
+
