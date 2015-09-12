@@ -27,7 +27,7 @@ describe "GET /jokes", type: :request do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     get "/jokes", format: :json
     response_body = JSON.parse(response.body)
-    puts response_body
+
     expect(response.status).to eq(200)
     expect(response_body).to include("data")
 
@@ -40,6 +40,16 @@ describe "GET /jokes", type: :request do
     expect(second_joke["type"]).to eq("jokes")
     expect(second_joke["attributes"]["body"]).to eq(joke2.body)
     expect(second_joke["relationships"]["tags"]["data"][0]["tag"]).to eq(tag2.tag)
+  end
+
+  describe "POST /jokes", type: :request do
+    let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
+    
+    it "should create a joke" do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      post "/jokes", body: "hello"
+      expect(Joke.last.body).to eq("hello")
+    end
   end
 end
 

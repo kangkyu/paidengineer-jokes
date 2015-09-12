@@ -14,6 +14,17 @@ describe 'jokes', type: :request do
     expect(response_body['email']).to eq('newuser@example.com')
   end
 
+  it "should not create a user with invalid parameters" do
+    post '/users'
+    expect(response.status).to eq(400)
+    
+    post '/users', email: "newuser@example.com"
+    expect(response.status).to eq(400)
+
+    post '/users', password: "secret"
+    expect(response.status).to eq(400)
+  end
+
   it 'should delete a user' do
     expect(User.count).to eq(2)
 
@@ -23,3 +34,4 @@ describe 'jokes', type: :request do
     expect(User.count).to eq(1)
   end
 end
+

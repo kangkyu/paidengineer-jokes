@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
       session = Session.create(token: SecureRandom.uuid, user_id: user.id)
       render json: session.to_json
     else
-      render json: "400"
+      render json: "400", status: 400
     end
   end
 end
+
