@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if user.save
       render json: user.to_json
     else
-      render json: '400'
+     render json: '400', status: 400
     end
   end
 

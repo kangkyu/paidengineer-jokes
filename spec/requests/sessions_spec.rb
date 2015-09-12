@@ -10,4 +10,9 @@ describe 'sessions', type: :request do
     expect(body['token']).to_not be_nil
     expect(body['user_id']).to eq(1)
   end
+
+  it "should not create a session if user is invalid" do
+    post '/sessions'
+    expect(response.status).to eq(400)
+  end
 end
