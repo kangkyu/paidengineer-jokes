@@ -1,11 +1,13 @@
 class MainController < ApplicationController
   def ping
     render json: {
-      responses: [
-        {
+      data: [{
+        type: "responses",
+        attributes: {
           pong: true
         }
-      ]
+        }]
     }
   end
 end
+
