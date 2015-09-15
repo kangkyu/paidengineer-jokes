@@ -7,8 +7,8 @@ describe 'sessions', type: :request do
   it 'should create a session' do
     post '/sessions', params
     body = JSON.parse(response.body)
-    expect(body['token']).to_not be_nil
-    expect(body['user_id']).to eq(1)
+    expect(body['data']['attributes']['token']).to_not be_nil
+    expect(body['data']['attributes']['user_id']).to eq(1)
   end
 
   it "should not create a session if user is invalid" do
@@ -16,3 +16,4 @@ describe 'sessions', type: :request do
     expect(response.status).to eq(400)
   end
 end
+
