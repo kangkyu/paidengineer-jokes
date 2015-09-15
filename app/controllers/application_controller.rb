@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
+  before_action :ensure_json_request
+
+  def ensure_json_request
+    return if request.format.symbol == :json
+    render :nothing => true, :status => 406
+  end
 
   def ensure_current_user
     render json: '404', status: 404 if current_user.blank?

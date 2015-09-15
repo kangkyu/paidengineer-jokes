@@ -11,7 +11,7 @@ describe "login", type: :request do
     response_body = JSON.parse(response.body)
     token = response_body['data']['attributes']['token']
 
-    get '/jokes', nil, {'Authorization': "Auth #{token}" }
+    get '/jokes', { format: :json }, {'Authorization': "Auth #{token}" }
     jokes = JSON.parse(response.body)
 
     first_joke = jokes['data'][0]
