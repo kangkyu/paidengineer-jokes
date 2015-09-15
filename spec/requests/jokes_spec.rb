@@ -17,7 +17,7 @@ describe 'jokes', type: :request do
   it 'should delete a joke record' do
     expect(Joke.count).to eq(1)
 
-    delete "/jokes/#{joke.id}"
+    delete "/jokes/#{joke.id}", format: :json 
 
     expect(response.status).to eq(204)
     expect(Joke.count).to eq(0)
@@ -59,13 +59,11 @@ describe "GET /jokes", type: :request do
     get "/jokes", format: :json  
     expect(response.status).to eq(200)
     response_body = JSON.parse(response.body)
-    puts "json passes"
     get "/jokes", format: :xml
     expect(response.status).to eq(406)
     get "/jokes", format: :html
     expect(response.status).to eq(406)
   end
-end
 
   describe "POST /jokes", type: :request do
     let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
