@@ -6,7 +6,7 @@ describe 'jokes', type: :request do
 
   before do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    get "/jokes/#{joke.id}", nil, headers
+    get "/jokes/#{joke.id}", {format: :json}, headers
   end
 
   it 'should get a collection of jokes' do
@@ -17,7 +17,7 @@ describe 'jokes', type: :request do
   it 'should delete a joke record' do
     expect(Joke.count).to eq(1)
 
-    delete "/jokes/#{joke.id}"
+    delete "/jokes/#{joke.id}", {format: :json} 
 
     expect(response.status).to eq(204)
     expect(Joke.count).to eq(0)
@@ -34,7 +34,7 @@ describe "GET /jokes", type: :request do
     tag2 = FactoryGirl.create(:tag, joke_id: joke2.id, tag: "Second tag")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    get "/jokes", format: :json
+    get "/jokes", {format: :json}
     response_body = JSON.parse(response.body)
 
     expect(response.status).to eq(200)
@@ -51,12 +51,26 @@ describe "GET /jokes", type: :request do
     expect(second_joke["relationships"]["tags"]["data"][0]["tag"]).to eq(tag2.tag)
   end
 
+  it "should only respond to only JSON requests" do
+    joke1 = FactoryGirl.create(:joke, body: "First joke")
+    tag1 = FactoryGirl.create(:tag, joke_id: joke1.id, tag: "First tag")
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    get "/jokes", {format: :json}
+    expect(response.status).to eq(200)
+    response_body = JSON.parse(response.body)
+    get "/jokes", {format: :xml}
+    expect(response.status).to eq(406)
+    get "/jokes", {format: :html}
+    expect(response.status).to eq(406)
+  end
+
   describe "POST /jokes", type: :request do
     let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
     
     it "should create a joke" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      post "/jokes", body: "hello"
+      post "/jokes", format: :json, body: "hello"
       expect(Joke.last.body).to eq("hello")
     end
   end
