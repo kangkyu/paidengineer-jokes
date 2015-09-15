@@ -13,6 +13,15 @@ describe 'jokes', type: :request do
     response_body = JSON.parse(response.body)
     expect(response_body['body']).to eq(joke.body)
   end
+
+  it 'should delete a joke record' do
+    expect(Joke.count).to eq(1)
+
+    delete "/jokes/#{joke.id}"
+
+    expect(response.status).to eq(204)
+    expect(Joke.count).to eq(0)
+  end
 end
 
 describe "GET /jokes", type: :request do
@@ -52,4 +61,3 @@ describe "GET /jokes", type: :request do
     end
   end
 end
-
