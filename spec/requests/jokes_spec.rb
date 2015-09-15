@@ -17,7 +17,7 @@ describe 'jokes', type: :request do
   it 'should delete a joke record' do
     expect(Joke.count).to eq(1)
 
-    delete "/jokes/#{joke.id}", format: :json 
+    delete "/jokes/#{joke.id}", {format: :json} 
 
     expect(response.status).to eq(204)
     expect(Joke.count).to eq(0)
@@ -34,7 +34,7 @@ describe "GET /jokes", type: :request do
     tag2 = FactoryGirl.create(:tag, joke_id: joke2.id, tag: "Second tag")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    get "/jokes", format: :json
+    get "/jokes", {format: :json}
     response_body = JSON.parse(response.body)
 
     expect(response.status).to eq(200)
@@ -56,12 +56,12 @@ describe "GET /jokes", type: :request do
     tag1 = FactoryGirl.create(:tag, joke_id: joke1.id, tag: "First tag")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    get "/jokes", format: :json  
+    get "/jokes", {format: :json}
     expect(response.status).to eq(200)
     response_body = JSON.parse(response.body)
-    get "/jokes", format: :xml
+    get "/jokes", {format: :xml}
     expect(response.status).to eq(406)
-    get "/jokes", format: :html
+    get "/jokes", {format: :html}
     expect(response.status).to eq(406)
   end
 
