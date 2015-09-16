@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
-  before_action :ensure_json_request
+  # before_action :ensure_json_request
 
   def ensure_json_request
-    return if request.format.symbol == :json
+    return if request.format == :json
     render :nothing => true, :status => 406
   end
 
