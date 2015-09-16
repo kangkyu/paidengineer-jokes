@@ -16,6 +16,13 @@ development:
   pool: 5
   username: paid_programmer
 
+production:
+  adapter: pg
+  encoding: unicode
+  database: jokes_development
+  pool: 5
+  username: paid_programmer
+
 test: &test
   adapter: sqlite3
   encoding: unicode
