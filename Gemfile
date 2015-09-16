@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
-ruby "2.2.1"
+ruby "2.2.2"
 
 gem 'bcrypt'
+gem 'capistrano', '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rvm'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'rails', '4.2.4'
