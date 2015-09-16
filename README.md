@@ -75,3 +75,44 @@ curl -X DELETE --header "Authorization: Auth dc77617f-181f-4de6-95f6-72a3ba4a667
 Use Postman
 
 Choose verb `DELETE` and route `'/users/1'` with a Header: Authorization as "Auth \<token\>"
+
+####use `tags#create` action to create a tag
+
+Use cURL
+
+```sh
+curl -X POST -H "Accept: application/json" -H "Authorization: Auth 84df3357-aadc-495d-a52a-5c4a041461b0" --data "joke_id=1&tag=test" http://localhost:3000/tags
+# => {"id":1,"joke_id":1,"tag":"test","created_at":"2015-09-16T02:55:41.712Z","updated_at":"2015-09-16T02:55:41.712Z"}
+```
+Use Postman
+
+Choose verb `POST` and route `'/tags'` with the following:
+Headers: Accept as "application/json" and Authorization as "Auth \<token\>"
+Body: joke_id as integer and tag as string
+
+####use `tags#update` action to update a tag
+
+Use cURL
+
+```sh
+curl -X PUT -H "Accept: application/json" -H "Authorization: Auth 84df3357-aadc-495d-a52a-5c4a041461b0" --data "joke_id=1&tag=update" http://localhost:3000/tags/1
+# => {"id":1,"joke_id":1,"tag":"update","created_at":"2015-09-16T02:55:41.712Z","updated_at":"2015-09-16T03:11:08.740Z"}
+```
+Use Postman
+
+Choose verb `PATCH` and route `'/tags/1'` with the following:
+Headers: Accept as "application/json" and Authorization as "Auth \<token\>"
+Body: joke_id as integer and tag as string
+
+####use `tags#delete` action to delete a tag
+
+Use cURL
+
+```sh
+curl -X DELETE -H "Accept: application/json" -H "Authorization: Auth 84df3357-aadc-495d-a52a-5c4a041461b0" http://localhost:3000/tags/1
+# => {"id":1,"joke_id":1,"tag":"test","created_at":"2015-09-16T02:55:41.712Z","updated_at":"2015-09-16T02:55:41.712Z"}
+```
+Use Postman
+
+Choose verb `DELETE` and route `'/tags/1'` with the following:
+Headers: Accept as "application/json" and Authorization as "Auth \<token\>"
