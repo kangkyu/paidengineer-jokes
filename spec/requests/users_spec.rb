@@ -11,7 +11,7 @@ describe 'jokes', type: :request do
 
   it 'should create a user' do
     response_body = JSON.parse(response.body)
-    expect(response_body['email']).to eq('newuser@example.com')
+    expect(response_body["data"]["attributes"]["email"]).to eq(params[:email])
   end
 
   it "should not create a user with invalid parameters" do
