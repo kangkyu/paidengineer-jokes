@@ -17,7 +17,7 @@ development:
   username: paid_programmer
 
 production:
-  adapter: pg
+  adapter: postgresql
   encoding: unicode
   database: jokes_development
   pool: 5
