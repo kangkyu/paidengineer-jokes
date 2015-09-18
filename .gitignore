@@ -3,3 +3,5 @@
 /jokes_test
 /tmp
 /public/simplecov
+
+.ruby-version
