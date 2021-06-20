@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "POST /tags", type: :request do
-  let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
+  let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
   let!(:params) {{ joke_id: 1, tag: "funny" }}
 
   it "should create a tag with valid parameters" do
@@ -34,8 +34,8 @@ describe "POST /tags", type: :request do
 end
 
 describe "PATCH /tags", type: :request do
-  let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
-  let(:tag) { FactoryGirl.create(:tag, joke_id: 1, tag: "funny") }
+  let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
+  let(:tag) { FactoryBot.create(:tag, joke_id: 1, tag: "funny") }
 
   it "should update a tag with valid parameters" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -62,8 +62,8 @@ describe "PATCH /tags", type: :request do
 end
 
 describe "DELETE /tags", type: :request do
-  let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
-  let!(:tag) { FactoryGirl.create(:tag, joke_id: 2, tag: "delete me") }
+  let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
+  let!(:tag) { FactoryBot.create(:tag, joke_id: 2, tag: "delete me") }
 
   it "should delete a tag" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

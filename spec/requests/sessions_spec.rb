@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'sessions', type: :request do
-  let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
+  let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
   let(:params) {{ email: user.email, password: user.password }}
 
   it 'should create a session' do

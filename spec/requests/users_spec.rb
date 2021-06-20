@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'jokes', type: :request do
-  let!(:admin) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
+  let!(:admin) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
   let!(:params) {{ email: 'newuser@example.com', password: 'password' }}
 
   before do
@@ -17,7 +17,7 @@ describe 'jokes', type: :request do
   it "should not create a user with invalid parameters" do
     post '/users'
     expect(response.status).to eq(400)
-    
+
     post '/users', email: "newuser@example.com"
     expect(response.status).to eq(400)
 

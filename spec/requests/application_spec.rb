@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe "login", type: :request do
-  let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
+  let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
   let(:params) {{ email: user.email, password: user.password }}
 
   it "should go through the login process" do
-    joke1 = FactoryGirl.create(:joke, body: "First joke")
+    joke1 = FactoryBot.create(:joke, body: "First joke")
 
     post '/sessions', params
     response_body = JSON.parse(response.body)

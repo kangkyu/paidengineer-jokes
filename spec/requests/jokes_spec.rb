@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'jokes', type: :request do
-  let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
-  let(:joke) { FactoryGirl.create(:joke, body: 'Two programmers walked into a bar') }
+  let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
+  let(:joke) { FactoryBot.create(:joke, body: 'Two programmers walked into a bar') }
 
   before do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -25,13 +25,13 @@ describe 'jokes', type: :request do
 end
 
 describe "GET /jokes", type: :request do
-  let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
+  let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
 
   it "should output in JSON API format" do
-    joke1 = FactoryGirl.create(:joke, body: "First joke")
-    joke2 = FactoryGirl.create(:joke, body: "Second joke")
-    tag1 = FactoryGirl.create(:tag, joke_id: joke1.id, tag: "First tag")
-    tag2 = FactoryGirl.create(:tag, joke_id: joke2.id, tag: "Second tag")
+    joke1 = FactoryBot.create(:joke, body: "First joke")
+    joke2 = FactoryBot.create(:joke, body: "Second joke")
+    tag1 = FactoryBot.create(:tag, joke_id: joke1.id, tag: "First tag")
+    tag2 = FactoryBot.create(:tag, joke_id: joke2.id, tag: "Second tag")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     get "/jokes", {format: :json}
@@ -52,8 +52,8 @@ describe "GET /jokes", type: :request do
   end
 
 #  it "should only respond to only JSON requests" do
-#    joke1 = FactoryGirl.create(:joke, body: "First joke")
-#    tag1 = FactoryGirl.create(:tag, joke_id: joke1.id, tag: "First tag")
+#    joke1 = FactoryBot.create(:joke, body: "First joke")
+#    tag1 = FactoryBot.create(:tag, joke_id: joke1.id, tag: "First tag")
 #
 #    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 #    get "/jokes", {format: :json}
@@ -66,8 +66,8 @@ describe "GET /jokes", type: :request do
 #  end
 
   describe "POST /jokes", type: :request do
-    let(:user) { FactoryGirl.create(:user, email: 'email@sample.com', password: 'password') }
-    
+    let(:user) { FactoryBot.create(:user, email: 'email@sample.com', password: 'password') }
+
     it "should create a joke" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       post "/jokes", format: :json, body: "hello"
