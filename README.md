@@ -1,4 +1,4 @@
-###To install:
+### To install:
 
 ```sh
 bundle install
@@ -12,7 +12,7 @@ First, add a user and some jokes using `seeds.rb` file (or save your own data on
 bundle exec rake db:seed
 ```
 --
-###Pull Requests, Merging, and PivotalTracker
+### Pull Requests, Merging, and PivotalTracker
 "Start" a ticket on PivotalTracker and add yourself as an owner
 
 Use the ticket id# to name branches in the following format:
@@ -27,13 +27,13 @@ Product Manager will Accept or Reject the ticket
 
 --
 
-###To use:
+### To use:
 
 Check if it's working correctly. Use [**cURL**](http://curl.haxx.se/docs/httpscripting.html) and [**Postman**](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) chrome app here for example:
 
 + authenticate the user and create a session
 
-####use `sessions#create` action to generate token for a user
+#### use `sessions#create` action to generate token for a user
 
 Use cURL
 
@@ -48,7 +48,7 @@ Choose verb `POST` and route `'/sessions'` with URL Parameters: email and passwo
 + and then use the session's token string
 + open `'/jokes'` route now you should get JSON for all jokes
 
-####use `jokes#index` action for `'/jokes'` route:
+#### use `jokes#index` action for `'/jokes'` route:
 
 Use cURL
 
@@ -65,7 +65,7 @@ to get JSON of all jokes listed
 
 + delete a user
 
-####use `users#destroy` action to delete a user
+#### use `users#destroy` action to delete a user
 
 Use cURL
 
@@ -76,7 +76,7 @@ Use Postman
 
 Choose verb `DELETE` and route `'/users/1'` with a Header: Authorization as "Auth \<token\>"
 
-####use `tags#create` action to create a tag
+#### use `tags#create` action to create a tag
 
 Use cURL
 
@@ -90,7 +90,7 @@ Choose verb `POST` and route `'/tags'` with the following:
 Headers: Accept as "application/json" and Authorization as "Auth \<token\>"
 Body: joke_id as integer and tag as string
 
-####use `tags#update` action to update a tag
+#### use `tags#update` action to update a tag
 
 Use cURL
 
@@ -104,7 +104,7 @@ Choose verb `PATCH` and route `'/tags/1'` with the following:
 Headers: Accept as "application/json" and Authorization as "Auth \<token\>"
 Body: joke_id as integer and tag as string
 
-####use `tags#delete` action to delete a tag
+#### use `tags#delete` action to delete a tag
 
 Use cURL
 
